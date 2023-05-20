@@ -16,7 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from movies import views # movies -> folder name, views -> views.py file
 
+# Checkout namespace for urls if multiple apps share the same name
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('movies/', views.movies), # views.movies -> 'movies' function in views.py
+    path('movies/home', views.home),
+    path('movies/<int:id>', views.movie_detail, name='detail'),
+    path('movies/create', views.create_movie, name='create')
 ]
