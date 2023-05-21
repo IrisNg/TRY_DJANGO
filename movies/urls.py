@@ -24,5 +24,6 @@ urlpatterns = [
     path('movies/', views.movies), # views.movies -> 'movies' function in views.py
     path('movies/home', views.home),
     path('movies/<int:id>', views.movie_detail, name='detail'),
-    path('movies/create', views.create_movie, name='create')
+    path('movies/create', views.create_movie, name='create'),
+    path('movies/list', views.movie_list)
 ]
