@@ -10,7 +10,7 @@ def movies(request):
 
 def movie_list(request):
     # get all movies, serialize them, return json
-    movies = Movie.object.all()
+    movies = Movie.objects.all()
     serializer = MovieSerializer(movies, many=True)
     return JsonResponse(serializer.data, safe=False)
 
