@@ -1,0 +1,7 @@
+<h1>Movie night</h1>
+<ul>
+{% for movie in movies %}
+<li><a href="{% url 'detail' movie.id %}">{{movie.title}} from {{movie.year}}</a></li>
+{% endfor %}
+</ul>
+<a href="{% url 'create' %}">Add movie</a>
