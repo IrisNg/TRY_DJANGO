@@ -17,13 +17,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from movies import views # movies -> folder name, views -> views.py file
+from rest_framework.urlpatterns import format_suffix_patterns
 
 # Checkout namespace for urls if multiple apps share the same name
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('movies/', views.movies), # views.movies -> 'movies' function in views.py
+    path('movies/', views.movies_REST), # rest_framework
+    path('movies/get', views.get_movies), # views.movies -> 'movies' function in views.py
     path('movies/home', views.home),
-    path('movies/<int:id>', views.movie_detail, name='detail'),
-    path('movies/create', views.create_movie, name='create'),
-    path('movies/list', views.movie_list)
+    # path('movies/<int:id>', views.movie_detail, name='detail'),
+    path('movies/<int:id>', views.movie_detail_REST, name='detail'),
+    path('movies/create', views.create_movie, name='create')
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)
